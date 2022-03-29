@@ -1,5 +1,8 @@
 {
   "abc":[
-{"temp":123,"status":true}
+{
+  "temp":123,
+  "status":true
+}
     ]
 }
