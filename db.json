@@ -1,8 +1,6 @@
 {
-  "abc":[
-{
-  "temp":123,
-  "status":true
-}
-    ]
+  "abc": {
+    "temp": 2222,
+    "status": false
+  }
 }
