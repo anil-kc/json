@@ -1,0 +1,85 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class assesment2 extends JFrame {
+    private JTextField num1Field;
+    private JTextField num2Field;
+    private JTextField num3Field;
+    private JLabel sumLabel;
+    private JLabel multiplyLabel;
+
+    public static void main(String[] args) {
+        // Create a new instance of the CalculatorGUI class and set it to be visible
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new assesment2().setVisible(true);
+            }
+        });
+    }
+
+    public assesment2() {
+        // Set the title and size of the JFrame
+        setTitle("Number Calculator");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create the components
+        num1Field = new JTextField(10); // Text field for entering the first number
+        num2Field = new JTextField(10); // Text field for entering the second number
+        num3Field = new JTextField(10); // Text field for entering the third number
+        sumLabel = new JLabel(); // Label for displaying the sum of the numbers
+        multiplyLabel = new JLabel(); // Label for displaying the multiplication of the numbers
+        JButton calculateBtn = new JButton("Calculate"); // Button for performing the calculation
+
+        // Add an ActionListener to the Calculate button
+        calculateBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the input numbers from the text fields
+                double num1 = Double.parseDouble(num1Field.getText());
+                double num2 = Double.parseDouble(num2Field.getText());
+                double num3 = Double.parseDouble(num3Field.getText());
+
+                // Calculate the sum and multiply of the numbers using the helper methods
+                double sum = addNumbers(num1, num2, num3);
+                double multiply = multiplyNumbers(num1, num2, num3);
+
+                // Set the text of the sum and multiply labels with the calculated results
+                sumLabel.setText("The sum of the inserted numbers is: " + sum);
+                multiplyLabel.setText("The multiply of the inserted numbers is: " + multiply);
+
+                // Set the sum and multiply labels to be visible
+                sumLabel.setVisible(true);
+                multiplyLabel.setVisible(true);
+            }
+        });
+
+        // Set the layout to a vertical BoxLayout and add the components
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        add(new JLabel("Enter three numbers: "));
+        add(num1Field);
+        add(num2Field);
+        add(num3Field);
+        add(calculateBtn);
+        add(sumLabel);
+        add(multiplyLabel);
+
+        // Set the sum and multiply labels to be initially not visible
+        sumLabel.setVisible(false);
+        multiplyLabel.setVisible(false);
+    }
+
+    // Method to add three numbers together
+    public double addNumbers(double num1, double num2, double num3) {
+        return num1 + num2 + num3;
+    }
+
+    // Method to multiply three numbers together
+    public double multiplyNumbers(double num1, double num2, double num3) {
+
+        return num1 * num2 * num3;
+    }
+
+
+}
